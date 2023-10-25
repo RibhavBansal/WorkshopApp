@@ -1,0 +1,60 @@
+<!-- nav_graph.xml -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/studentDashboardFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.workshopapp.Fragments.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/action_login_to_studentDashboardFragment"
+            app:destination="@id/studentDashboardFragment" />
+        <action
+            android:id="@+id/action_login_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <!-- Add other actions here as needed -->
+    </fragment>
+
+    <fragment
+        android:id="@+id/availableWorkshopsFragment"
+        android:name="com.example.workshopapp.Fragments.AvailableWorkshopsFragment"
+        android:label="AvailableWorkshopsFragment">
+        <action
+            android:id="@+id/action_availableWorkshops_to_studentDashboard"
+            app:destination="@id/studentDashboardFragment" />
+        <action
+            android:id="@+id/action_availableWorkshopsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_availableWorkshopsFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <!-- Add other actions here as needed -->
+    </fragment>
+
+    <fragment
+        android:id="@+id/studentDashboardFragment"
+        android:name="com.example.workshopapp.Fragments.StudentDashboardFragment"
+        android:label="StudentDashboardFragment"
+        tools:layout="@layout/fragment_student_dashboard">
+        <!-- This is set as the default destination in MainActivity.kt -->
+        <!-- Add other actions here as needed -->
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.workshopapp.Fragments.SignupFragment"
+        android:label="SignupFragment" >
+        <action
+            android:id="@+id/action_signup_to_studentDashboardFragment"
+            app:destination="@id/studentDashboardFragment" />
+        <action
+            android:id="@+id/action_signup_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <!-- Add other actions here as needed -->
+
+    <!-- Add other fragments and actions here as needed -->
+
+</navigation>
