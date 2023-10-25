@@ -12,12 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.workshopapp.Database.DatabaseHelper
 import com.example.workshopapp.R
+import com.example.workshopapp.SessionManager
 
 class LoginFragment : Fragment() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
     private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +31,7 @@ class LoginFragment : Fragment() {
         etPassword = rootView.findViewById(R.id.etPassword)
         btnLogin = rootView.findViewById(R.id.btnLogin)
 
+        sessionManager = SessionManager(requireContext())
         databaseHelper = DatabaseHelper.getInstance(requireContext())
         databaseHelper.insertInitialWorkshops()
 
@@ -45,8 +48,8 @@ class LoginFragment : Fragment() {
             if (validateInput(email, password)) {
                 val user = databaseHelper.login(email, password)
                 if (user != null) {
-                    // Successfully logged in, navigate to the student dashboard
-                    findNavController().navigate(R.id.action_login_to_studentDashboardFragment)
+                    sessionManager.setLoggedIn(true)
+                    findNavController().navigate(R.id.action_loginFragment_to_availableWorkshopsFragment)
                 } else {
                     // Login failed, show a toast message
                     showToast("Login failed. Invalid credentials.")

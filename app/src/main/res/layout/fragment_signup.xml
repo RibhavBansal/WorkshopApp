@@ -2,36 +2,69 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/etFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Full Name"/>
+        android:hint="Full Name"
+        android:padding="8dp"
+        android:background="@drawable/edittext_background"
+        android:layout_marginBottom="16dp"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"/>
+        android:hint="Email"
+        android:padding="8dp"
+        android:background="@drawable/edittext_background"
+        android:layout_marginBottom="16dp"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:padding="8dp"
+        android:background="@drawable/edittext_background"
+        android:layout_marginBottom="16dp"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up"/>
+        android:text="Sign Up"
+        android:background="#2196F3"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:onClick="onLoginClick" />
 
     <TextView
         android:id="@+id/tvLoginLink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Already have an account? Login here"/>
+        android:text="Already have an account? Login here"
+        android:textColor="#2196F3"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:onClick="onSignUpClick"/>
 </LinearLayout>

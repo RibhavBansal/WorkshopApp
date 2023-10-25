@@ -16,18 +16,29 @@ import com.example.workshopapp.interfaces.workshop
 
 class WorkshopAdapter(private val context: Context,
                       private val listener: workshop.WorkshopAdapterListener,
-                      private val workshops: List<Workshop>) :
+                      private val workshops: List<Workshop>,
+                      private val fragmentType: FragmentType) :
     RecyclerView.Adapter<WorkshopAdapter.WorkshopViewHolder>() {
+
+    enum class FragmentType {
+        AVAILABLE_WORKSHOPS,
+        STUDENT_DASHBOARD
+    }
 
     inner class WorkshopViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.tvTitle)
         val description: TextView = itemView.findViewById(R.id.tvDescription)
-        val applyButton: Button = itemView.findViewById(R.id.btnApply)
+        val applyButton: Button? = itemView.findViewById(R.id.btnApply)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkshopViewHolder {
+        val layoutResId = when (fragmentType) {
+            FragmentType.AVAILABLE_WORKSHOPS -> R.layout.item_workshop
+            FragmentType.STUDENT_DASHBOARD -> R.layout.item_dashboard
+        }
+
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_workshop, parent, false)
+            .inflate(layoutResId, parent, false)
         return WorkshopViewHolder(itemView)
     }
 
@@ -40,7 +51,7 @@ class WorkshopAdapter(private val context: Context,
         val databaseHelper = DatabaseHelper(context)
 
         // Handle the "Apply" button click here
-        holder.applyButton.setOnClickListener {
+        holder.applyButton?.setOnClickListener {
             // Check if the user is logged in (you need to implement a session management mechanism)
             if (sessionManager.isLoggedIn()) {
                 // User is logged in, record the application
@@ -72,17 +83,14 @@ class WorkshopAdapter(private val context: Context,
                 when (which) {
                     0 -> {
                         // Log In option selected
-                        // Navigate to the LoginFragment or show the login dialog
                         listener.onLoginOptionSelected()
                     }
                     1 -> {
                         // Register option selected
-                        // Navigate to the SignupFragment or show the registration dialog
                         listener.onRegisterOptionSelected()
                     }
                     2 -> {
                         // Cancel option selected
-                        // Do nothing or dismiss the dialog
                     }
                 }
             }

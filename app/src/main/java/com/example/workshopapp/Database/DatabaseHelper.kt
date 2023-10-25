@@ -225,6 +225,32 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(createTableUsersQuery)
     }
 
+    fun fetchAppliedWorkshopsFromDatabase(userId: Int, db: SQLiteDatabase): List<Workshop> {
+        val appliedWorkshops = ArrayList<Workshop>()
+        val query = "SELECT w.* FROM $TABLE_WORKSHOPS w " +
+                "INNER JOIN $TABLE_WORKSHOP_APPLICATIONS wa ON w.$COLUMN_ID = wa.$COLUMN_WORKSHOP_ID " +
+                "WHERE wa.$COLUMN_USER_ID = ?"
+
+        val cursor: Cursor? = db.rawQuery(query, arrayOf(userId.toString()))
+
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val idColumnIndex = it.getColumnIndex(COLUMN_ID)
+                val titleColumnIndex = it.getColumnIndex(COLUMN_TITLE)
+                val descriptionColumnIndex = it.getColumnIndex(COLUMN_DESCRIPTION)
+
+                do {
+                    val id = it.getInt(idColumnIndex)
+                    val title = it.getString(titleColumnIndex)
+                    val description = it.getString(descriptionColumnIndex)
+                    appliedWorkshops.add(Workshop(id, title, description))
+                } while (it.moveToNext())
+            }
+        }
+
+        return appliedWorkshops
+    }
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // Drop existing tables and recreate them if necessary
         db.execSQL("DROP TABLE IF EXISTS $TABLE_WORKSHOPS")

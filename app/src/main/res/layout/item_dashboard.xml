@@ -1,0 +1,33 @@
+<!-- item_workshop.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/workshop_item_background"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Workshop Title -->
+<TextView
+android:id="@+id/tvTitle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Workshop Title"
+android:textSize="18sp"
+android:textColor="#000000"
+android:textStyle="bold"
+android:layout_marginBottom="8dp" />
+
+    <!-- Workshop Description -->
+<TextView
+android:id="@+id/tvDescription"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Workshop Description"
+android:textSize="14sp"
+android:textColor="#666666"
+android:layout_marginBottom="8dp" />
+
+    </LinearLayout>

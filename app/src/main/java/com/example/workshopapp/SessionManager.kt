@@ -12,14 +12,29 @@ class SessionManager(context: Context) {
         editor = sharedPreferences.edit()
     }
 
+    fun logout() {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", false)
+        // You may also clear other session data, such as user credentials
+        // editor.putString("username", null)
+        // editor.putString("password", null)
+        editor.apply()
+    }
+
     fun createLoginSession(userId: Int) {
         editor.putBoolean(KEY_IS_LOGGED_IN, true)
         editor.putInt(KEY_USER_ID, userId)
         editor.apply()
     }
 
+    fun setLoggedIn(isLoggedIn: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", isLoggedIn)
+        editor.apply()
+    }
+
     fun isLoggedIn(): Boolean {
-        return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false)
+        return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, true)
     }
 
     fun getUserId(): Int {
