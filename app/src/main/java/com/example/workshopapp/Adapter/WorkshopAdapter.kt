@@ -1,7 +1,6 @@
-package com.example.workshopapp
+package com.example.workshopapp.Adapter
 
 import android.content.Context
-import android.database.sqlite.SQLiteDatabase
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +11,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workshopapp.Database.DatabaseHelper
 import com.example.workshopapp.Database.Workshop
-import com.example.workshopapp.interfaces.workshop
+import com.example.workshopapp.R
+import com.example.workshopapp.SessionManager
+import com.example.workshopapp.Interfaces.workshop
 
 class WorkshopAdapter(private val context: Context,
                       private val listener: workshop.WorkshopAdapterListener,
                       private val workshops: List<Workshop>,
-                      private val fragmentType: FragmentType) :
+                      private val fragmentType: FragmentType
+) :
     RecyclerView.Adapter<WorkshopAdapter.WorkshopViewHolder>() {
 
     enum class FragmentType {

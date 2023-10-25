@@ -1,4 +1,4 @@
-package com.example.workshopapp.interfaces
+package com.example.workshopapp.Interfaces
 
 interface workshop {
     interface WorkshopAdapterListener {

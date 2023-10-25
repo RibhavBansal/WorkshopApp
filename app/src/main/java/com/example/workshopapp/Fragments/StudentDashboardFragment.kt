@@ -1,7 +1,5 @@
 package com.example.workshopapp.Fragments
 
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +12,8 @@ import com.example.workshopapp.Database.DatabaseHelper
 import com.example.workshopapp.R
 import com.example.workshopapp.Database.Workshop
 import com.example.workshopapp.SessionManager
-import com.example.workshopapp.WorkshopAdapter
-import com.example.workshopapp.interfaces.workshop
+import com.example.workshopapp.Adapter.WorkshopAdapter
+import com.example.workshopapp.Interfaces.workshop
 
 class StudentDashboardFragment : Fragment(), workshop.WorkshopAdapterListener {
     private lateinit var recyclerView: RecyclerView

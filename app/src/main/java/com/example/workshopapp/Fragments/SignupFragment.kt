@@ -49,7 +49,7 @@ class SignupFragment : Fragment() {
             databaseHelper.registerUser(user)
 
             // After successful registration, navigate to the student dashboard
-            findNavController().navigate(R.id.action_signup_to_studentDashboardFragment)
+            findNavController().navigate(R.id.action_signupFragment_to_availableWorkshopsFragment)
         }
 
         return rootView

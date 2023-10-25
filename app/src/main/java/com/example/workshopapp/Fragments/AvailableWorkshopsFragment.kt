@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -14,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.workshopapp.R
 import com.example.workshopapp.Database.Workshop
 import com.example.workshopapp.SessionManager
-import com.example.workshopapp.WorkshopAdapter
-import com.example.workshopapp.interfaces.workshop
+import com.example.workshopapp.Adapter.WorkshopAdapter
+import com.example.workshopapp.Interfaces.workshop
 
 class AvailableWorkshopsFragment : Fragment(), workshop.WorkshopAdapterListener {
     private lateinit var recyclerView: RecyclerView
